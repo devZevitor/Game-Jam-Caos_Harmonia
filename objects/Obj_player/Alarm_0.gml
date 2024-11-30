@@ -8,3 +8,4 @@ if(player_correndo == true)
 	player_correndo = false;
 } 
 
+

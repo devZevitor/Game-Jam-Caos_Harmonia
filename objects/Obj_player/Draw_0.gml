@@ -1,4 +1,4 @@
 
 	draw_self();
 	
-	draw_text(x, y - 40, alarm[0])
+	draw_text(x, y - 40, estamina)

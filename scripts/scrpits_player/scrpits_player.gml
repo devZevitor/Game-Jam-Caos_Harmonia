@@ -7,8 +7,19 @@
 			direita = keyboard_check(ord("D"));
 			esquerda = keyboard_check(ord("A"))
 	
-			hveloc = (direita - esquerda) * veloc;
-			vveloc = (baixo - cima) * veloc;
+			hveloc = (direita - esquerda);
+			vveloc = (baixo - cima);
+	
+			veloc_dir = point_direction(x,y ,x +hveloc, y + vveloc);
+			
+			if hveloc != 0 or vveloc != 0 {
+				veloc = 2;
+			} else {
+				veloc = 0;
+			}
+				
+			hveloc = lengthdir_x(veloc, veloc_dir);
+			vveloc = lengthdir_y(veloc, veloc_dir);
 	
 			if(place_meeting(x + hveloc,y, Obj_parent_block)){
 				while(!place_meeting(x +sign(hveloc),y, Obj_parent_block)) {
@@ -27,16 +38,31 @@
 			} 
 	
 			y+= vveloc;
+			
 		#endregion
 		#region Corrida
-			if(alarm[0] <= 0){
-				if(keyboard_check(vk_space)){
-					alarm[0] = 60;
-				
+			if(keyboard_check(vk_space)){	
+				if(estamina > 0){
+					estamina -= 6
 					player_correndo = true;
 					veloc = veloc_correndo;
+					alarm[0] = 15;
 				} 
-			} 
+			} else {
+				veloc = veloc_andando;
+				player_correndo = false;
+				if(estamina < max_estamina){
+					if(alarm[0] == 0){
+						if(estamina >= max_estamina - 25){
+							estamina = max_estamina;
+						} else {
+							estamina = estamina + 25;
+							alarm[0] = 15;
+						}
+						
+					}
+				}
+			}
 		#endregion
 		#region Troca de estado -> escondido
 			if(object_exists(Obj_armario)){

@@ -70,7 +70,7 @@
 				
 				if(place_meeting(x,y,_inst) or place_meeting(x + 1, y, _inst) or place_meeting(x, y + 1, _inst)) {
 					if(keyboard_check(ord("Q"))) {
-						instance_create_layer(x,y,"Instances", Obj_skillCheck);
+						instance_create_layer(x,y,"Instances", Obj_skillCheck_Armario);
 						estado = scr_player_task;						
 					}
 				}

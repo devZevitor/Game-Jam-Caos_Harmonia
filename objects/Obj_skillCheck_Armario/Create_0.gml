@@ -16,7 +16,7 @@
 	bar_left = _xx + (size_bg_x/escala)*escala_2; 
 
 	bar_c_xx = _xx; 
-	bar_c_speed = 7; 
+	bar_c_speed = 5; 
 	bar_c_dir = 1;
 	
 	

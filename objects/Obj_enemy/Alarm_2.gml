@@ -1,0 +1,2 @@
+
+	tempo_ataque = true;

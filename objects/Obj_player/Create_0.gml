@@ -18,12 +18,16 @@
 	#region variaveis da corrida
 		veloc_correndo = 4;
 		player_correndo = false;
-		max_estamina = 360;
+		max_estamina = 3600/4;
 		estamina = max_estamina
 	#endregion
 	
 	#region variaveis de esconderijos
 		player_visible = true;
+	#endregion
+	
+	#region variaveis de "vida"
+		infectado = 0;
 	#endregion
 
 	

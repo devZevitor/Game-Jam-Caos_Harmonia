@@ -16,7 +16,7 @@
 	bar_left = _xx + (size_bg_x/escala)*escala_2; 
 
 	bar_c_xx = _xx; 
-	bar_c_speed = 5; 
+	bar_c_speed = 4; 
 	bar_c_dir = 1;
 	
 	
@@ -25,13 +25,13 @@
 	pointer_alpha= 1;
 	
 	acertos = 0;
-	speed_veloc = 0.6;
+	speed_veloc = 0.3;
 	
 	
 	ponteiro = Spr_ponteiro;
 	
 	barra_largura = hud_xx;  
-	barra_altura = 40;       
+	barra_altura = hud_yy*.2;       
 	barra_valor = barra_largura; 
 
 	barra_x = 0;

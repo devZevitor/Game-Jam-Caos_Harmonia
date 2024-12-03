@@ -1,0 +1,2 @@
+
+	ponteiro = Spr_ponteiro;

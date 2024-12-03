@@ -10,7 +10,16 @@ function A_star_enemy(dest_x, dest_y, veloc) {
 		path_start(caminho, veloc, path_action_stop, false);
 	}
 }
-
+function Detectar_player() {	
+	if(object_exists(Obj_player)){
+		if(Obj_player.estado != scr_player_escondido) {
+			if(point_distance(x, y, Obj_player.x, Obj_player.y) < dist_min){
+				estado = scr_enemy_perseguindo;
+			}
+		}
+	}
+}
+	
 function scr_choosed_action(){
 	var proximo_estado = choose(scr_enemy_parado,scr_enemy_patrulhando);
 	
@@ -48,11 +57,15 @@ function scr_choosed_action(){
 }
 
 function scr_enemy_parado(){
+	Detectar_player();	
+	
 	veloc = 0;
 	path_end();
 }
 
 function scr_enemy_patrulhando(){
+	Detectar_player();
+
 	var _dist_x = abs(x - dest_x)
 	var _dist_y = abs(y - dest_y)
 	
@@ -61,4 +74,64 @@ function scr_enemy_patrulhando(){
 		y = dest_y;
 		estado = scr_choosed_action;
 	}
+}
+
+
+function scr_enemy_perseguindo(){
+
+	A_star_enemy(Obj_player.x, Obj_player.y, veloc);
+	
+	if(object_exists(Obj_player)){
+		
+		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 2*dist_min){
+			veloc = veloc *0.7;
+		}
+		
+		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 3*dist_min){
+			estado = scr_enemy_parado;
+			alarm[1] = 60;
+		}
+		
+		if(point_distance(x, y, Obj_player.x, Obj_player.y) <= dist_min/ 4){
+			veloc = 0
+			estado = scr_enemy_atacando;
+		} else { veloc = max_veloc; }
+		
+		if(Obj_player.estado = scr_player_escondido){
+			estado = scr_enemy_parado;
+			alarm[1] = 60;
+		}
+	}
+}
+
+function scr_enemy_retornando_perseguicao(){
+	Detectar_player();
+	
+	var _dist_x = abs(x - enemy_x)
+	var _dist_y = abs(y - enemy_y)
+	
+	if(_dist_x < veloc or _dist_y < veloc){
+		x = enemy_x;
+		y = enemy_y;
+		estado = scr_choosed_action;
+	}
+}
+
+function scr_enemy_atacando() {
+    path_end();
+    if (tempo_ataque == true) {
+		
+        var _dir = point_direction(x, y, Obj_player.x, Obj_player.y);
+        var distance = 28; 
+
+        var hitbox_x = x + lengthdir_x(distance, _dir);
+        var hitbox_y = y + lengthdir_y(distance, _dir);
+
+        var _inst = instance_create_layer(hitbox_x, hitbox_y, "Instances_1", Obj_hitbox_enemy);
+		
+        alarm[2] = 80;
+		tempo_ataque = false;
+		estado = scr_enemy_perseguindo;
+       
+    }
 }

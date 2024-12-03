@@ -4,6 +4,10 @@
 	
 	if(estado == scr_enemy_patrulhando){
 		draw_text(x - 16, y - 32, "Patrulha");
-	} else {
+	} else if (estado == scr_enemy_parado) {
 		draw_text(x - 16, y - 20, "Parado");
+	}  else if (estado == scr_enemy_perseguindo) {
+		draw_text(x - 16, y - 20, "Perseguindo");
+	}  else if (estado == scr_enemy_retornando_perseguicao) {
+		draw_text(x - 16, y - 20, "retornando");
 	}

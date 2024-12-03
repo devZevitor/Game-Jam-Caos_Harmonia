@@ -35,7 +35,7 @@ if(alarm[2] <= 0) {
 	pointer_alpha = 0.5;
  }
 
-if(bar_c_speed == 13){
+if(bar_c_speed == 10){
 	speed_veloc = 0.01;
 }
 

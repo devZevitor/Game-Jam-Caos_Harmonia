@@ -1,18 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_pipe_a",
-  "eventList":[],
+  "%Name":"Obj_pai_pipe",
+  "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"Obj_pipe_a",
+  "name":"Obj_pai_pipe",
   "overriddenProperties":[],
   "parent":{
     "name":"Objs_pipes",
     "path":"folders/Objetos/Objs_pipes.yy",
   },
-  "parentObjectId":{
-    "name":"Obj_pai_pipe",
-    "path":"objects/Obj_pai_pipe/Obj_pai_pipe.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Sprite12",
-    "path":"sprites/Sprite12/Sprite12.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,8 +1,7 @@
 	
 	pipe_ativado = -1;
 	pipe_name = -1;
-	pipe_destino = -1;
-		
+	pipe_destino = -1;		
 		
 	global.inicialize_game = false;
 	if(global.inicialize_game == false){

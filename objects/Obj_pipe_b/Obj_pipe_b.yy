@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_pipe_a",
+  "%Name":"Obj_pipe_b",
   "eventList":[],
   "managed":true,
-  "name":"Obj_pipe_a",
+  "name":"Obj_pipe_b",
   "overriddenProperties":[],
   "parent":{
     "name":"Objs_pipes",

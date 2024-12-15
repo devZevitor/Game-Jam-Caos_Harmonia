@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Spr_skillCheck",
-    "path":"folders/Sprites/Spr_skillCheck.yy",
+    "name":"Spr_Armario",
+    "path":"folders/Sprites/Spr_skillCheck/Spr_Armario.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

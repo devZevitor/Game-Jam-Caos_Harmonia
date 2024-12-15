@@ -28,6 +28,7 @@
 	
 	#region variaveis de "vida"
 		infectado = 0;
+		timer_created = false;
 	#endregion
 
 	

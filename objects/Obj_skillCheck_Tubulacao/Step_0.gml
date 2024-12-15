@@ -13,17 +13,11 @@
 	}
 	
 	
-	var _barra = barra_progresso_escala * progresso;
-	
-	if(_barra > 99 * escala && _barra < 105 * escala){
+	var _barra = barra_progresso_escala * progresso;	
+	if(_barra >= 99 * escala){
 		Obj_pai_pipe.sucesso = true;
 		instance_destroy(self);
 	}
-	
-	//if(_barra > 105 * escala){
-	//	Obj_pai_pipe.sucesso = false;
-	//	instance_destroy(self);
-	//}
 	
 	if(alarm[1] <= 0){
 		if(_barra < 99 * escala){

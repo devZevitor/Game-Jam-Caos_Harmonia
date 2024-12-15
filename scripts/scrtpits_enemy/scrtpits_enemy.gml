@@ -127,7 +127,7 @@ function scr_enemy_atacando() {
         var hitbox_x = x + lengthdir_x(distance, _dir);
         var hitbox_y = y + lengthdir_y(distance, _dir);
 
-        var _inst = instance_create_layer(hitbox_x, hitbox_y, "Instances_1", Obj_hitbox_enemy);
+        var _inst = instance_create_layer(hitbox_x, hitbox_y, "Instances", Obj_hitbox_enemy);
 		
         alarm[2] = 80;
 		tempo_ataque = false;

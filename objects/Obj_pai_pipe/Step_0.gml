@@ -16,6 +16,8 @@
 					
 		Obj_control.number_x = number_x;
 		Obj_control.number_y = number_y;
+		
+		ds_save_items_room()
 									
 		room_goto(destino);		
 		instance_destroy(self);

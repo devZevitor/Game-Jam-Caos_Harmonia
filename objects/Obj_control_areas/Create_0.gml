@@ -1,4 +1,4 @@
-if(Obj_area_enemy_1) {
+if(instance_exists(Obj_area_enemy_1)) {
 	randomize();
 
 	areas = [Obj_area_enemy_1];

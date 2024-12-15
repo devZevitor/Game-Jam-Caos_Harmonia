@@ -1,6 +1,5 @@
 room_create = room;
 
-
 _cell_t = 32;
 cell_h = room_width div 32;
 cell_v = room_height div 32;

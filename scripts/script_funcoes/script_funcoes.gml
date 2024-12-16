@@ -1,7 +1,9 @@
 function ds_grid_add_item(){
+	///@arg Nome
 	///@arg Item
 	///@arg Quantidade
 	///@arg Sprite
+	///@arg Arremessavel
 				
 	var _grid = Obj_inventario.grid_items;
 	var _item = -1;
@@ -9,8 +11,8 @@ function ds_grid_add_item(){
 	
 	for (var _checagem = 0; _checagem < Obj_inventario.size_inventario; _checagem++)
 	{
-		 if _grid[# Infos.Sprite, _checagem] == argument[2] && _grid[# Infos.Item, _checagem] ==  argument[0] {
-			_grid[# Infos.Quantidade, _checagem	] += argument[1];
+		 if _grid[# Infos.Sprite, _checagem] == argument[3] && _grid[# Infos.Item, _checagem] ==  argument[1] {
+			_grid[# Infos.Quantidade, _checagem	] += argument[2];
 			_item = _checagem;
 		}
 	}
@@ -30,6 +32,8 @@ function ds_grid_add_item(){
 			_grid[# 0, _checagem] = argument[0];
 			_grid[# 1, _checagem] = argument[1];
 			_grid[# 2, _checagem] = argument[2];
+			_grid[# 3, _checagem] = argument[3];
+			_grid[# 4, _checagem] = argument[4];
 		}
 	}	
 }
@@ -114,3 +118,44 @@ function ds_save_items_exits() {
     }
 }
 
+function ds_grid_exists_item() {
+	///@arg Item
+	///@arg Sprite
+	///@arg arremessavel
+	
+	var _grid = Obj_inventario.grid_items;
+	for (var i = 0; i < Obj_inventario.size_inventario; i++){
+		if(_grid[# Infos.Item, i] == argument[0] && _grid[# Infos.Sprite, i] == argument[1] ){
+			return true;
+			break;
+		}
+	}
+	return false;
+	
+}
+	
+function ds_grid_item_arremessavel() {
+    ///@arg posição
+    if (Obj_inventario.grid_items[# Infos.Arremessavel, argument[0]] == true) {
+		return Obj_inventario.grid_items[# Infos.Nome, argument[0]];
+	}
+	
+	return false;
+}
+
+function ds_grid_remove_item() {
+	///@arg Nome
+	
+	var _grid = Obj_inventario.grid_items;
+	for (var i = 0; i < Obj_inventario.size_inventario; i++){
+		if(_grid[# Infos.Nome, i] == argument[0]){
+			
+			_grid[# Infos.Nome, i] = -1;
+			_grid[# Infos.Item, i] = -1;
+			_grid[# Infos.Sprite, i] = -1;
+			_grid[# Infos.Quantidade, i] = -1;
+			_grid[# Infos.Arremessavel, i] = -1;
+		}
+	}
+	
+}

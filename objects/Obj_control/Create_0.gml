@@ -12,15 +12,18 @@
 		instance_create_layer(x,y, "Instances_obj", Obj_control_areas);
 		#region create items
 			var _item1 = instance_create_layer(128,128, "Instances_obj", Obj_item);
+			_item1.nome = "Faca";
 			_item1.quantidade = 1;
 			_item1.sprite_index = Spr_Items;
 			_item1.image_index = Items.faca;
 	
 	
 			var _item2 = instance_create_layer(222,225, "Instances_obj", Obj_item);
+			_item2.nome = "Trigo";
 			_item2.quantidade = 1;
-			_item2.sprite_index = Spr_Items;
-			_item2.image_index = Items.alcool;	
+			_item2.sprite_index = Spr_Armas;
+			_item2.image_index = Armas.Trigo;	
+			_item2.arremessavel = true;
 		#endregion
 	}
 	

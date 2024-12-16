@@ -76,6 +76,58 @@
 				}
 			}
 		#endregion
+		#region Troca de estado -> arremessando
+			
+			var tecla = -1;
+			var _arremesavel = false;
+			for (var i = 0; i <= 9; i++) {
+				if (keyboard_check_pressed(ord(string(i)))) {
+				    tecla = i; 
+				    break; 
+				}
+			}
+
+			switch (tecla) {
+				case 0:
+					 _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 1:
+					 _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 2:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 3:
+					_arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 4:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 5:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 6:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 7:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 8:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    case 9:
+			        _arremesavel = ds_grid_item_arremessavel(tecla);
+			        break;
+			    default:
+					_arremesavel = false;
+			    break;
+			}			
+			
+			if(_arremesavel != false){
+				item_arremessado = _arremesavel;
+				estado = scr_player_arremessando_tranqueira;
+			}
+		#endregion
 	}
 	
 	function scr_player_task() {}
@@ -87,6 +139,30 @@
 		if (keyboard_check(ord("W"))or keyboard_check(ord("S")) or keyboard_check(ord("D")) or keyboard_check(ord("A"))) {
 			image_alpha = 1;
 			player_visible = true;	
+			estado = scr_player_andando;
+		}
+	}
+		
+	function scr_player_arremessando_tranqueira() {
+		if(instance_exists(Obj_enemy)){
+			var _enemy = instance_nearest(x,y, Obj_enemy);
+			var _inst = instance_create_layer(x,y, "Instances_obj", Obj_tranqueiras);	
+			var _dir = point_direction(x,y, _enemy.x, _enemy.y);
+			
+			_inst.sprite_index = Spr_projetill;	
+			_inst.direction = _dir;
+			_inst.speed = 8;
+			
+			switch item_arremessado {
+				case "Trigo":
+					_inst.desaceleracao = .2;
+					_inst.tempo = 2;
+					//cria uma fumação de trigo que cega os zumbis
+				break;
+			}	
+			
+			ds_grid_remove_item(item_arremessado);
+			item_arremessado = "vazio";
 			estado = scr_player_andando;
 		}
 	}

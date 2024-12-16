@@ -10,4 +10,6 @@
 		draw_text(x - 16, y - 20, "Perseguindo");
 	}  else if (estado == scr_enemy_retornando_perseguicao) {
 		draw_text(x - 16, y - 20, "retornando");
+	}  else if (estado == scr_enemy_desorientado) {
+		draw_text(x - 16, y - 20, "Desorientado");
 	}

@@ -30,6 +30,10 @@
 		infectado = 0;
 		timer_created = false;
 	#endregion
+	
+	#region variaveis de items
+		item_arremessado = "vazio";
+	#endregion
 
 	
 	

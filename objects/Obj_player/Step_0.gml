@@ -7,7 +7,7 @@
 			var _inst = instance_nearest(x,y, Obj_item);
 			if(distance_to_point(_inst.x, _inst.y) < 15){
 				if(keyboard_check_pressed(ord("F"))){
-					ds_grid_add_item(_inst.image_index, _inst.quantidade, _inst.sprite_index);
+					ds_grid_add_item(_inst.nome,_inst.image_index, _inst.quantidade, _inst.sprite_index, _inst.arremessavel);
 					instance_destroy(_inst);
 				}
 			}

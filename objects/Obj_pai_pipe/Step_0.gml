@@ -3,6 +3,7 @@
 		if(object_exists(Obj_player)){
 			if((point_distance(x,y, Obj_player.x, Obj_player.y) <= 33) or (place_meeting(x,y,Obj_player))) {
 				if(keyboard_check_pressed(ord("E"))){
+					Obj_player.estado = scr_player_task;
 					instance_create_layer(x,y, "Instances",Obj_skillCheck_Tubulacao)
 				}
 			}

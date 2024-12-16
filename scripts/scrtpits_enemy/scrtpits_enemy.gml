@@ -76,7 +76,6 @@ function scr_enemy_patrulhando(){
 	}
 }
 
-
 function scr_enemy_perseguindo(){
 
 	A_star_enemy(Obj_player.x, Obj_player.y, veloc);
@@ -88,7 +87,11 @@ function scr_enemy_perseguindo(){
 		}
 		
 		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 3*dist_min){
-			estado = scr_enemy_parado;
+			player_x = Obj_player.x;
+			player_y = Obj_player.y;
+			veloc = max_veloc;
+			A_star_enemy(player_x, player_y, veloc)
+			estado = scr_enemy_pos_perseguindo;
 			alarm[1] = 60;
 		}
 		
@@ -98,11 +101,30 @@ function scr_enemy_perseguindo(){
 		} else { veloc = max_veloc; }
 		
 		if(Obj_player.estado = scr_player_escondido){
-			estado = scr_enemy_parado;
+			player_x = Obj_player.x;
+			player_y = Obj_player.y;
+			veloc = max_veloc;
+			A_star_enemy(player_x, player_y, veloc)
+			estado = scr_enemy_pos_perseguindo;
 			alarm[1] = 60;
 		}
 	}
 }
+
+function scr_enemy_pos_perseguindo() {
+	Detectar_player();
+
+	var _dist_x = abs(x - player_x)
+	var _dist_y = abs(y - player_y)
+	
+	if(_dist_x < veloc or _dist_y < veloc){
+		x = player_x;
+		y = player_y;
+		estado = scr_enemy_retornando_perseguicao;
+	}
+	
+}
+
 
 function scr_enemy_retornando_perseguicao(){
 	Detectar_player();
@@ -134,4 +156,8 @@ function scr_enemy_atacando() {
 		estado = scr_enemy_perseguindo;
        
     }
+}
+	
+function scr_enemy_desorientado () {
+	veloc = 0;
 }

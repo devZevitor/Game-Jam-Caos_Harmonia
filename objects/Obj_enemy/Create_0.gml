@@ -21,7 +21,10 @@
 	enemy_y = y;
 	
 	tempo_ataque = true;
+	player_x = 0
+	player_y = 0;
 	
+	tempo_desorientado = 0;
 	
 	
 	

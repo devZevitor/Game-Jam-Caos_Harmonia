@@ -21,7 +21,9 @@
 		ds_save_items_room()
 									
 		room_goto(destino);		
-		instance_destroy(self);
+		Obj_player.estado = scr_player_andando;
 		ativado = true;
+		instance_destroy(self);
+		
 	}
 

@@ -1,11 +1,14 @@
 
 
 	estado = scr_player_andando;
+	estado_agachado = false;
+	barulho = 100;
 	#region variaveis da movimentação
 		hveloc = 0;
 		vveloc = 0;
 		veloc_andando = 2;
 		veloc = veloc_andando;
+		veloc_agachado = 1.25;
 
 		cima = -1;
 		baixo = -1;

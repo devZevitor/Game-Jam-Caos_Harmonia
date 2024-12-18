@@ -137,6 +137,7 @@ function ds_grid_exists_item() {
 function ds_grid_item_arremessavel() {
     ///@arg posição
     if (Obj_inventario.grid_items[# Infos.Arremessavel, argument[0]] == true) {
+		Obj_player.estado = scr_player_arremessando_tranqueira;
 		return Obj_inventario.grid_items[# Infos.Nome, argument[0]];
 	}
 	

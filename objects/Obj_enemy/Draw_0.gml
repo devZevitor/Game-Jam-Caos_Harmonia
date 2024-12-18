@@ -13,3 +13,6 @@
 	}  else if (estado == scr_enemy_desorientado) {
 		draw_text(x - 16, y - 20, "Desorientado");
 	}
+	
+	draw_set_color(c_white)
+	draw_rectangle(x - dist_min/2, y - dist_min/2, x + dist_min/2, y + dist_min/2, true);

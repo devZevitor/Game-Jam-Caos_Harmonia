@@ -13,7 +13,7 @@ function A_star_enemy(dest_x, dest_y, veloc) {
 function Detectar_player() {	
 	if(object_exists(Obj_player)){
 		if(Obj_player.estado != scr_player_escondido) {
-			if(point_distance(x, y, Obj_player.x, Obj_player.y) < dist_min){
+			if(distance_to_point(Obj_player.x, Obj_player.y) <= dist_min){
 				estado = scr_enemy_perseguindo;
 			}
 		}
@@ -82,17 +82,12 @@ function scr_enemy_perseguindo(){
 	
 	if(object_exists(Obj_player)){
 		
-		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 2*dist_min){
+		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 1.25*dist_min){
 			veloc = veloc *0.7;
 		}
 		
-		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 3*dist_min){
-			player_x = Obj_player.x;
-			player_y = Obj_player.y;
-			veloc = max_veloc;
-			A_star_enemy(player_x, player_y, veloc)
+		if(point_distance(x, y, Obj_player.x, Obj_player.y) >= 1.5*dist_min){
 			estado = scr_enemy_pos_perseguindo;
-			alarm[1] = 60;
 		}
 		
 		if(point_distance(x, y, Obj_player.x, Obj_player.y) <= dist_min/ 4){
@@ -100,13 +95,8 @@ function scr_enemy_perseguindo(){
 			estado = scr_enemy_atacando;
 		} else { veloc = max_veloc; }
 		
-		if(Obj_player.estado = scr_player_escondido){
-			player_x = Obj_player.x;
-			player_y = Obj_player.y;
-			veloc = max_veloc;
-			A_star_enemy(player_x, player_y, veloc)
+		if(Obj_player.estado == scr_player_escondido){
 			estado = scr_enemy_pos_perseguindo;
-			alarm[1] = 60;
 		}
 	}
 }
@@ -114,15 +104,11 @@ function scr_enemy_perseguindo(){
 function scr_enemy_pos_perseguindo() {
 	Detectar_player();
 
-	var _dist_x = abs(x - player_x)
-	var _dist_y = abs(y - player_y)
-	
-	if(_dist_x < veloc or _dist_y < veloc){
-		x = player_x;
-		y = player_y;
-		estado = scr_enemy_retornando_perseguicao;
+	if (path_position >= 1) {
+		if (alarm[1]  <= 0) {
+			alarm[1] = irandom_range(30, 90); //estado retornando_perseguindo
+		}
 	}
-	
 }
 
 

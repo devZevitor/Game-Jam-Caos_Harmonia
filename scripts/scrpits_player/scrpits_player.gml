@@ -13,7 +13,11 @@
 			veloc_dir = point_direction(x,y ,x +hveloc, y + vveloc);
 			
 			if hveloc != 0 or vveloc != 0 {
-				veloc = 2;
+				if(estado_agachado == true ) {
+					veloc = veloc_agachado;
+				} else {
+					veloc = veloc_andando;
+				}
 			} else {
 				veloc = 0;
 			}
@@ -40,9 +44,22 @@
 			y+= vveloc;
 			
 		#endregion
+		#region Agachado
+			//place_free() verificar se o player não está abaixo de um objeto...
+			if keyboard_check_pressed(vk_shift) estado_agachado = !estado_agachado;
+			if(estado_agachado == true ) {
+				sprite_index = Spr_player_agachado;
+				barulho = 100;
+			} else {
+				sprite_index = Spr_player;
+				barulho = 130;
+			}
+					
+		#endregion
 		#region Corrida
 			if(keyboard_check(vk_space)){	
 				if(estamina > 0){
+					barulho = 160;
 					estamina -= 6
 					player_correndo = true;
 					veloc = veloc_correndo;
@@ -87,46 +104,8 @@
 				}
 			}
 
-			switch (tecla) {
-				case 0:
-					 _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 1:
-					 _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 2:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 3:
-					_arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 4:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 5:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 6:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 7:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 8:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    case 9:
-			        _arremesavel = ds_grid_item_arremessavel(tecla);
-			        break;
-			    default:
-					_arremesavel = false;
-			    break;
-			}			
-			
-			if(_arremesavel != false){
-				item_arremessado = _arremesavel;
-				estado = scr_player_arremessando_tranqueira;
-			}
+			if (tecla >= 0 && tecla <= 9) { item_arremessado = ds_grid_item_arremessavel(tecla); } 
+		
 		#endregion
 	}
 	

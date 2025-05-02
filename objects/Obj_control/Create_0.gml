@@ -1,4 +1,5 @@
 	
+	
 	room_2 = false;
 	
 	pipe_ativado = -1;

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scripts_areas_enemy",
   "isCompatibility":false,
   "isDnD":false,

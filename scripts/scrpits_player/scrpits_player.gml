@@ -107,6 +107,28 @@
 			if (tecla >= 0 && tecla <= 9) { item_arremessado = ds_grid_item_arremessavel(tecla); } 
 		
 		#endregion
+		
+		#region Ativando obstaculo
+			if(object_exists(Obj_armario_obstacle)){
+			var _obst = instance_nearest(x, y, Obj_armario_obstacle);
+			if(distance_to_object(_obst) <= 5) and distance_to_object(_obst) > 1 {
+				if(keyboard_check(ord("X"))) {
+					_obst.status = true
+				}
+			}
+		}
+		
+		#endregion
+		#region pulando obstaculo
+			if(object_exists(Obj_armario_obstacle)){
+			var _obst = instance_nearest(x, y, Obj_armario_obstacle);
+				if(distance_to_object(_obst) <= 2 and _obst.used = true) {
+					if(keyboard_check_pressed(vk_space)) {
+						Obj_player.estado = scr_player_pulando_obstaculo
+					}
+				}
+			}
+		#endregion
 	}
 	
 	function scr_player_task() {}
@@ -145,3 +167,21 @@
 			estado = scr_player_andando;
 		}
 	}
+		
+	function scr_player_pulando_obstaculo(){
+		if(object_exists(Obj_armario_obstacle)){
+			var _obst = instance_nearest(x, y, Obj_armario_obstacle);
+			if(Obj_player.x - _obst.x > 0){
+				// direita
+				Obj_player.x -= sprite_get_width(_obst.sprite_index) *2;
+				Obj_player.y = _obst.y + (sprite_get_height(_obst.sprite_index)/2)
+				Obj_player.estado = scr_player_andando;
+			} else {
+				// esquerda
+				Obj_player.x += sprite_get_width(_obst.sprite_index) *2;
+				Obj_player.y = _obst.y + (sprite_get_height(_obst.sprite_index)/2)
+				Obj_player.estado = scr_player_andando;
+			}
+		}
+	}
+	
